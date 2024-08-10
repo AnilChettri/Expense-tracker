@@ -1,83 +1,101 @@
+import json
+import os
+from datetime import datetime
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 
-class ExpenseTrackerApp:
-    def __init__(self, master):
-        self.master = master
-        self.master.title("Expense Tracker")
+# File to store expenses
+DATA_FILE = 'data.json'
 
-        self.expenses = []
+# Load expenses from file
+def load_expenses():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, 'r') as file:
+            return json.load(file)
+    return []
 
-        self.amount_label = tk.Label(self.master, text="Amount:")
-        self.amount_label.grid(row=0, column=0)
+# Save expenses to file
+def save_expenses(expenses):
+    with open(DATA_FILE, 'w') as file:
+        json.dump(expenses, file, indent=4)
 
-        self.amount_entry = tk.Entry(self.master)
-        self.amount_entry.grid(row=0, column=1)
+# Add a new expense
+def add_expense(amount, description, category):
+    expenses = load_expenses()
+    expense = {
+        'amount': amount,
+        'description': description,
+        'category': category,
+        'date': datetime.now().strftime('%Y-%m-%d')
+    }
+    expenses.append(expense)
+    save_expenses(expenses)
+    messagebox.showinfo("Success", "Expense added successfully.")
+    update_summary()
 
-        self.description_label = tk.Label(self.master, text="Description:")
-        self.description_label.grid(row=1, column=0)
+# Print expense summary
+def update_summary():
+    expenses = load_expenses()
+    categories = {}
+    monthly_expenses = {}
 
-        self.description_entry = tk.Entry(self.master)
-        self.description_entry.grid(row=1, column=1)
+    for expense in expenses:
+        category = expense['category']
+        amount = expense['amount']
+        date = datetime.strptime(expense['date'], '%Y-%m-%d')
+        month_year = date.strftime('%Y-%m')
 
-        self.category_label = tk.Label(self.master, text="Category:")
-        self.category_label.grid(row=2, column=0)
+        if category not in categories:
+            categories[category] = 0
+        categories[category] += amount
 
-        self.category_entry = tk.Entry(self.master)
-        self.category_entry.grid(row=2, column=1)
+        if month_year not in monthly_expenses:
+            monthly_expenses[month_year] = 0
+        monthly_expenses[month_year] += amount
 
-        self.add_button = tk.Button(self.master, text="Add Expense", command=self.add_expense)
-        self.add_button.grid(row=3, column=0, columnspan=2)
+    # Clear the text area and update it with new data
+    summary_text.delete(1.0, tk.END)
+    summary_text.insert(tk.END, "Category-wise Expenditure:\n")
+    for category, total in categories.items():
+        summary_text.insert(tk.END, f"{category}: ${total:.2f}\n")
 
-        self.view_button = tk.Button(self.master, text="View Expenses", command=self.view_expenses)
-        self.view_button.grid(row=4, column=0, columnspan=2)
+    summary_text.insert(tk.END, "\nMonthly Summary:\n")
+    for month_year, total in monthly_expenses.items():
+        summary_text.insert(tk.END, f"{month_year}: ${total:.2f}\n")
 
-        self.monthly_summary_button = tk.Button(self.master, text="Monthly Summary", command=self.monthly_summary)
-        self.monthly_summary_button.grid(row=5, column=0, columnspan=2)
+# Add expense form
+def add_expense_form():
+    try:
+        amount = float(amount_entry.get())
+        description = description_entry.get()
+        category = category_entry.get()
+        add_expense(amount, description, category)
+    except ValueError:
+        messagebox.showerror("Invalid Input", "Please enter a valid amount.")
 
-        self.category_wise_expenditure_button = tk.Button(self.master, text="Category-wise Expenditure", command=self.category_wise_expenditure)
-        self.category_wise_expenditure_button.grid(row=6, column=0, columnspan=2)
+# Create main application window
+root = tk.Tk()
+root.title("Expense Tracker")
 
-        self.exit_button = tk.Button(self.master, text="Exit", command=self.master.quit)
-        self.exit_button.grid(row=7, column=0, columnspan=2)
+# Create and place widgets
+tk.Label(root, text="Amount").grid(row=0, column=0, padx=10, pady=10)
+amount_entry = tk.Entry(root)
+amount_entry.grid(row=0, column=1, padx=10, pady=10)
 
-    def add_expense(self):
-        try:
-            amount = float(self.amount_entry.get())
-            description = self.description_entry.get()
-            category = self.category_entry.get()
-            self.expenses.append({'amount': amount, 'description': description, 'category': category})
-            messagebox.showinfo("Success", "Expense added successfully.")
-            self.amount_entry.delete(0, tk.END)
-            self.description_entry.delete(0, tk.END)
-            self.category_entry.delete(0, tk.END)
-        except ValueError:
-            messagebox.showerror("Error", "Invalid input. Please enter a valid amount.")
+tk.Label(root, text="Description").grid(row=1, column=0, padx=10, pady=10)
+description_entry = tk.Entry(root)
+description_entry.grid(row=1, column=1, padx=10, pady=10)
 
-    def view_expenses(self):
-        expense_list = ""
-        for expense in self.expenses:
-            expense_list += f"Amount: {expense['amount']}, Description: {expense['description']}, Category: {expense['category']}\n"
-        messagebox.showinfo("Expenses", expense_list)
+tk.Label(root, text="Category").grid(row=2, column=0, padx=10, pady=10)
+category_entry = tk.Entry(root)
+category_entry.grid(row=2, column=1, padx=10, pady=10)
 
-    def monthly_summary(self):
-        total_amount = sum(expense['amount'] for expense in self.expenses)
-        messagebox.showinfo("Monthly Summary", f"Total monthly expenses: {total_amount}")
+add_button = tk.Button(root, text="Add Expense", command=add_expense_form)
+add_button.grid(row=3, column=0, columnspan=2, pady=10)
 
-    def category_wise_expenditure(self):
-        categories = {}
-        for expense in self.expenses:
-            category = expense['category']
-            if category in categories:
-                categories[category] += expense['amount']
-            else:
-                categories[category] = expense['amount']
-        expenditure_list = ""
-        for category, amount in categories.items():
-            expenditure_list += f"Category: {category}, Expenditure: {amount}\n"
-        messagebox.showinfo("Category-wise Expenditure", expenditure_list)
+summary_text = tk.Text(root, width=50, height=15)
+summary_text.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = ExpenseTrackerApp(root)
-    root.mainloop()
+update_summary()
+
+root.mainloop()
