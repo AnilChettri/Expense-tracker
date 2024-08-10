@@ -1,0 +1,10 @@
+expense_tracker.py
+README.md
+requirements.txt
+example_data.txt
+screenshots/
+screenshot1.png
+screenshot2.png
+.gitignore
+LICENSE
+CHANGELOG.md
