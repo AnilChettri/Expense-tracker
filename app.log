@@ -1,0 +1,73 @@
+2025-06-11 21:47:51,471 - INFO - Pandas backend loaded 2.3.0
+2025-06-11 21:47:51,492 - INFO - Numpy backend loaded 2.1.3
+2025-06-11 21:47:51,494 - INFO - Pyspark backend NOT loaded
+2025-06-11 21:47:51,494 - INFO - Python backend loaded
+2025-06-11 21:47:56,339 - INFO - Database tables ensured.
+2025-06-11 21:47:57,248 - INFO - Streamlit app launched.
+2025-06-11 21:48:21,308 - INFO - Pandas backend loaded 2.3.0
+2025-06-11 21:48:21,318 - INFO - Numpy backend loaded 2.1.3
+2025-06-11 21:48:21,318 - INFO - Pyspark backend NOT loaded
+2025-06-11 21:48:21,318 - INFO - Python backend loaded
+2025-06-11 21:48:26,047 - INFO - Database tables ensured.
+2025-06-11 21:48:27,684 - INFO - Streamlit app launched.
+2025-06-11 21:48:35,823 - INFO - Database tables ensured.
+2025-06-11 21:48:35,824 - INFO - Streamlit app launched.
+2025-06-11 21:48:40,756 - INFO - Database tables ensured.
+2025-06-11 21:48:40,759 - INFO - Streamlit app launched.
+2025-06-11 21:48:45,949 - INFO - Database tables ensured.
+2025-06-11 21:48:45,969 - INFO - Streamlit app launched.
+2025-06-11 21:48:50,948 - INFO - Database tables ensured.
+2025-06-11 21:48:50,950 - INFO - Streamlit app launched.
+2025-06-11 21:48:51,052 - INFO - Displayed transaction summary.
+2025-06-11 21:48:53,681 - INFO - Database tables ensured.
+2025-06-11 21:48:53,685 - INFO - Streamlit app launched.
+2025-06-11 21:48:57,902 - INFO - Database tables ensured.
+2025-06-11 21:48:57,908 - INFO - Streamlit app launched.
+2025-06-11 21:49:00,579 - INFO - Database tables ensured.
+2025-06-11 21:49:00,580 - INFO - Streamlit app launched.
+2025-06-11 21:49:00,601 - WARNING - All data was reset by user.
+2025-06-11 21:49:02,890 - INFO - Database tables ensured.
+2025-06-11 21:49:02,895 - INFO - Streamlit app launched.
+2025-06-11 21:59:22,048 - INFO - Pandas backend loaded 2.3.0
+2025-06-11 21:59:22,064 - INFO - Numpy backend loaded 2.1.3
+2025-06-11 21:59:22,066 - INFO - Pyspark backend NOT loaded
+2025-06-11 21:59:22,066 - INFO - Python backend loaded
+2025-06-11 22:00:40,772 - INFO - Pandas backend loaded 2.3.0
+2025-06-11 22:00:40,788 - INFO - Numpy backend loaded 2.1.3
+2025-06-11 22:00:40,790 - INFO - Pyspark backend NOT loaded
+2025-06-11 22:00:40,790 - INFO - Python backend loaded
+2025-06-11 22:01:24,013 - INFO - Pandas backend loaded 2.3.0
+2025-06-11 22:01:24,025 - INFO - Numpy backend loaded 2.1.3
+2025-06-11 22:01:24,025 - INFO - Pyspark backend NOT loaded
+2025-06-11 22:01:24,025 - INFO - Python backend loaded
+2025-06-11 22:01:28,433 - INFO - Database tables ensured.
+2025-06-11 22:01:29,398 - INFO - Streamlit app launched.
+2025-06-11 22:01:49,311 - INFO - Pandas backend loaded 2.3.0
+2025-06-11 22:01:49,352 - INFO - Numpy backend loaded 2.1.3
+2025-06-11 22:01:49,355 - INFO - Pyspark backend NOT loaded
+2025-06-11 22:01:49,355 - INFO - Python backend loaded
+2025-06-11 22:02:01,045 - INFO - Database tables ensured.
+2025-06-11 22:02:04,289 - INFO - Streamlit app launched.
+2025-06-11 22:02:46,637 - INFO - Database tables ensured.
+2025-06-11 22:02:46,643 - INFO - Streamlit app launched.
+2025-06-11 22:02:49,923 - INFO - Database tables ensured.
+2025-06-11 22:02:49,928 - INFO - Streamlit app launched.
+2025-06-11 22:02:59,822 - INFO - Database tables ensured.
+2025-06-11 22:03:00,106 - INFO - Database tables ensured.
+2025-06-11 22:03:00,108 - INFO - Streamlit app launched.
+2025-06-11 22:03:00,134 - INFO - Transaction added: 500.0 - Food - income on 2025-06-11
+2025-06-11 22:03:00,383 - INFO - Fetched 1 rows from table 'transactions'.
+2025-06-11 22:03:05,042 - INFO - Database tables ensured.
+2025-06-11 22:03:05,043 - INFO - Streamlit app launched.
+2025-06-11 22:03:05,092 - INFO - Displayed transaction summary.
+2025-06-11 22:03:12,446 - INFO - EDA report saved to reports/expense_report.html
+2025-06-11 22:03:38,322 - INFO - Database tables ensured.
+2025-06-11 22:03:38,326 - INFO - Streamlit app launched.
+2025-06-11 22:03:42,388 - INFO - Database tables ensured.
+2025-06-11 22:03:42,393 - INFO - Streamlit app launched.
+2025-06-11 22:03:42,414 - INFO - Displayed transaction summary.
+2025-06-11 22:05:54,134 - INFO - Database tables ensured.
+2025-06-11 22:05:54,134 - INFO - Streamlit app launched.
+2025-06-11 22:06:00,946 - INFO - Database tables ensured.
+2025-06-11 22:06:00,948 - INFO - Streamlit app launched.
+2025-06-11 22:06:00,965 - INFO - Displayed transaction summary.
